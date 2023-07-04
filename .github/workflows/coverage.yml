@@ -17,4 +17,4 @@ jobs:
         run: npm run test:coverage
 
       - name: Testa se ocorre o erro
-        run: exit 1
+        run: exit 0
