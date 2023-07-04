@@ -1,20 +1,26 @@
-name: Jest test coverage
-on: 
-  push:
-    branches: [ pull-request ]
+name: Verificação de Cobertura de Teste
+
+on: [pull_request]
 
 jobs:
-  Jest:
+  test:
+    name: Executar Testes
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout do repositório
+        uses: actions/checkout@v2
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: latest
-      - run: npm ci
+          node-version: 14
+
+      - name: Instalar dependências
+        run: npm install
 
       - name: Executar Testes
-        run: npm run test:coverage
+        run: npm test -- --coverage
 
       - name: Verificar Cobertura
         run: |
