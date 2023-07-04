@@ -43,7 +43,7 @@ Este repositório foi criado para fornecer exemplos práticos e guias passo a pa
    - Realizando testes automatizados
    - Fazendo implantação em diferentes ambientes
 
-5. [Desenvolvimento de ações personalizadas](https://github.com/HenrikSantos/aprendendo-github-actions/tree/desenvolvimento):
+5. [Desenvolvimento de ações personalizadas](https://github.com/HenrikSantos/aprendendo-github-actions/tree/actions-personalizadas):
    - Criando sua própria ação personalizada
    - Estrutura de uma ação
    - Linguagens suportadas para ações personalizadas
