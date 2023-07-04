@@ -59,7 +59,7 @@ Este repositório foi criado para fornecer exemplos práticos e guias passo a pa
 
 ## Contribuição
 
-Se você tiver sugestões, melhorias, atualizações ou exemplos adicionais que possam enriquecer este repositório, fique à vontade para enviar uma solicitação pull ou abrir uma issue. Sua contribuição é muito bem-vinda!
+Se você tiver sugestões, melhorias, atualizações ou exemplos adicionais que possam enriquecer este repositório, fique à vontade para enviar uma solicitação pull ou abrir uma issue. Eu usei muito ChatGPT, é bem possível que precise de mais revisão e atualização, ou seja, sua contribuição é muito bem-vinda!
 
 Antes de enviar uma solicitação pull, certifique-se de ler as diretrizes de contribuição do repositório.
 
