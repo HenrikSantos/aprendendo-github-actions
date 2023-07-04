@@ -15,6 +15,3 @@ jobs:
 
       - name: Executar Testes
         run: npm run test:coverage
-
-      - name: Testa se ocorre o erro
-        run: exit 0
