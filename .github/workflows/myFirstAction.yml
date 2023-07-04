@@ -2,8 +2,9 @@
 
 name: Exemplo de Fluxo de Trabalho
 on:
-  pull_request:
-    branches: [introducao]
+  push:
+    branches:
+      - introducao
 
 # Fluxo de Trabalho
 jobs:
