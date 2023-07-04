@@ -12,12 +12,12 @@ jobs:
         with:
           node-version: latest
       - run: npm ci
-      - name: Verificar cobertura
+      - name: Verificar Cobertura
         run: |
-          # Comando para coletar a porcentagem de cobertura do Jest
-          coverage=$(npm run coverage -- --no-watch --json | jq '.total.lines.pct')
+          const coverage = require('./coverage/lcov-report/index.json');
+          const totalCoverage = coverage.total;
 
-          if (( $(echo "$coverage < 100" | bc -l) )); then
-            echo "A cobertura do Jest é menor que 100% (${coverage}%). O merge está bloqueado."
-            exit 1
-          fi
+          if (totalCoverage.lines.pct !== 100 || totalCoverage.statements.pct !== 100) {
+            echo "A cobertura de testes não é de 100%.";
+            exit 1;
+          }
