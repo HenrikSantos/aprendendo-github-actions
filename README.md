@@ -1,77 +1,140 @@
-# Aprendendo GitHub Actions
+# Estrutura básica do arquivo YAML
+O YAML (YAML Ain't Markup Language) é um formato de serialização de dados legível por humanos, frequentemente utilizado para configurar pipelines de integração contínua e outras tarefas relacionadas à automação de processos. A estrutura básica de um arquivo YAML é composta por pares de chave-valor, onde os valores podem ser de diferentes tipos, como strings, números, listas ou objetos aninhados.
 
-Neste repositório, você encontrará recursos para aprender e praticar o uso das GitHub Actions. As GitHub Actions são uma poderosa ferramenta do GitHub que permite automatizar tarefas, processos e fluxos de trabalho em seu repositório.
+Aqui está um exemplo básico de estrutura de um arquivo YAML:
 
-## O que são as GitHub Actions?
+``` yaml
+chave1: valor1
+chave2: valor2
+chave3:
+  - item1
+  - item2
+chave4:
+  subchave1: valor3
+  subchave2: valor4
+```
 
-As GitHub Actions são fluxos de trabalho automatizados que podem ser configurados em seu repositório GitHub. Esses fluxos de trabalho podem ser acionados por eventos específicos, como envio de código, criação de problemas ou lançamentos. Com as Actions, você pode criar fluxos de trabalho personalizados para automatizar tarefas como execução de testes, criação e publicação de pacotes, implantação em ambientes de produção e muito mais.
+Nesse exemplo, temos algumas chaves (chave1, chave2, chave3, chave4) e seus respectivos valores. A chave3 possui uma lista de itens (item1 e item2), enquanto a chave4 contém um objeto aninhado com subchaves (subchave1 e subchave2) e seus valores correspondentes.
 
-## Objetivos deste repositório
+# Definindo um fluxo de trabalho
+Em um arquivo YAML, você pode definir um fluxo de trabalho (workflow) para automatizar um conjunto de tarefas relacionadas. Um fluxo de trabalho pode ser composto por vários jobs, que são unidades de trabalho independentes. Cada job pode ter um conjunto de passos (steps) que serão executados sequencialmente.
 
-Este repositório foi criado para fornecer exemplos práticos e guias passo a passo que ajudarão você a aprender a usar as GitHub Actions.
+Aqui está um exemplo de definição de um fluxo de trabalho básico:
 
-## Como usar este repositório
+``` yaml
+name: Exemplo fluxo de trabalho
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
-1. Navegue pelas branches para explorar diferentes tópicos disponíveis.
-2. Leia a documentação detalhada fornecida em cada diretório para entender como configurar e executar as GitHub Actions específicas.
-3. Crie seu próprio diretório com seu próprio código.
+jobs:
+  build:
+    name: Construir
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
+      - name: Executar compilação
+        run: make
+      - name: Executar testes
+        run: make test
 
-# Glossário
+  deploy:
+    name: Implantação
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
+      - name: Implantação em produção
+        run: make deploy
+```
 
-1. [Introdução ao GitHub Actions](https://github.com/HenrikSantos/aprendendo-github-actions/tree/introducao):
-   - O que são GitHub Actions
-   - Benefícios de usar Actions
-   - Como as Actions funcionam
-   - Conceitos básicos (fluxo de trabalho, job, step, runner)
+Nesse exemplo, temos um fluxo de trabalho com dois jobs: "build" e "deploy". O fluxo de trabalho é acionado quando ocorre um push na branch "main" ou quando é aberto um pull request também na branch "main".
 
-2. [Sintaxe do arquivo de fluxo de trabalho](https://github.com/HenrikSantos/aprendendo-github-actions/tree/sintaxe):
-   - Estrutura básica do arquivo YAML
-   - Definindo um fluxo de trabalho
-   - Especificando eventos desencadeadores
-   - Configurando jobs e steps
-   - Usando ações pré-definidas e personalizadas
+O job "build" executa em um ambiente ubuntu-latest e possui três passos: fazer checkout do repositório, executar a compilação e executar os testes.
 
-3. [Executando ações em um runner](https://github.com/HenrikSantos/aprendendo-github-actions/tree/execucao):
-   - Runners e tipos de runners disponíveis
-   - Configurando um runner
-   - Executando ações em diferentes sistemas operacionais
-   - Parâmetros e entradas de ação
+O job "deploy" também executa em um ambiente ubuntu-latest e possui dois passos: fazer checkout do repositório e realizar a implantação em produção.
 
-4. [Integração contínua e entrega contínua (CI/CD)](https://github.com/HenrikSantos/aprendendo-github-actions/tree/cicd):
-   - Usando GitHub Actions para automação de CI/CD
-   - Configurando pipelines de CI/CD
-   - Realizando testes automatizados
-   - Fazendo implantação em diferentes ambientes
+# Especificando eventos desencadeadores
+Em um arquivo YAML, é possível especificar os eventos que desencadearão a execução do fluxo de trabalho. Esses eventos podem ser ações como push em uma branch específica, abertura de um pull request, criação de uma tag, entre outros.
 
-5. [Desenvolvimento de ações personalizadas](https://github.com/HenrikSantos/aprendendo-github-actions/tree/desenvolvimento):
-   - Criando sua própria ação personalizada
-   - Estrutura de uma ação
-   - Linguagens suportadas para ações personalizadas
-   - Testando e validando ações personalizadas
-   - Publicando ações personalizadas no GitHub Marketplace
+Aqui está um exemplo de especificação de eventos desencadeadores:
 
-6. [Boas práticas e dicas avançadas](https://github.com/HenrikSantos/aprendendo-github-actions/tree/boas-praticas):
-   - Organizando fluxos de trabalho complexos
-   - Utilizando segredos e variáveis de ambiente
-   - Trabalhando com matrizes e condicionais
-   - Depurando e registrando ações
-   - Monitorando e analisando resultados
+yaml
+Copy code
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+Nesse exemplo, o fluxo de trabalho será acionado quando ocorrer um push na branch "main" ou quando for aberto um pull request também na branch "main". É possível adicionar outras condições e especificar eventos adicionais conforme necessário.
 
-## Contribuição
+# Configurando jobs e steps
+Em um arquivo YAML, é possível configurar jobs e seus respectivos passos (steps). Os jobs representam unidades de trabalho independentes que serão executadas em paralelo ou sequencialmente, dependendo da configuração. Os passos são as tarefas que serão executadas dentro de cada job.
 
-Se você tiver sugestões, melhorias, atualizações ou exemplos adicionais que possam enriquecer este repositório, fique à vontade para enviar uma solicitação pull ou abrir uma issue. Sua contribuição é muito bem-vinda!
+Aqui está um exemplo de configuração de jobs e steps:
 
-Antes de enviar uma solicitação pull, certifique-se de ler as diretrizes de contribuição do repositório.
+``` yaml
+jobs:
+  build: # <-- Job build
+    name: Construir
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
 
-## Recursos úteis
+      - name: Executar compilação
+        run: make
 
-- [Documentação oficial das GitHub Actions](https://docs.github.com/en/actions)
-- [GitHub Marketplace](https://github.com/marketplace?type=actions) - Marketplace com várias Actions pré-construídas para diferentes casos de uso.
-- [Exemplos de fluxos de trabalho](https://github.com/actions/starter-workflows) - Exemplos oficiais de fluxos de trabalho fornecidos pelo GitHub.
-- [Awesome Actions](https://github.com/sdras/awesome-actions) - Uma lista curada de recursos úteis relacionados às GitHub Actions.
+      - name: Executar testes
+        run: make test
 
-## Licença
+  deploy: # <-- Job deploy
+    name: Implantação
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v3
 
-Este repositório está licenciado sob a [MIT License](LICENSE). Sinta-se à vontade para usá-lo e modificá-lo de acordo com suas necessidades.
+      - name: Implantação em produção
+        run: make deploy
+```
 
----
+Nesse exemplo, temos dois jobs: "build" e "deploy". Cada job possui um nome, especificação do ambiente de execução (no caso, ubuntu-latest) e uma lista de steps.
+
+Cada step tem um nome descritivo e pode executar uma ação pré-definida (como o "checkout" do repositório) ou executar um comando personalizado (usando a palavra-chave "run").
+
+Usando ações pré-definidas e personalizadas
+No contexto de fluxos de trabalho YAML, as ações são unidades de trabalho reutilizáveis que podem ser usadas nos steps dos jobs. Existem ações pré-definidas disponibilizadas pela comunidade e também é possível criar ações personalizadas para atender às necessidades específicas do projeto.
+
+Aqui está um exemplo de uso de ações pré-definidas e personalizadas:
+
+``` yaml
+steps:
+  - name: Checkout do repositório
+    uses: actions/checkout@v3
+
+  - name: Executar compilação
+    run: make
+
+  - name: Executar testes
+    run: make test
+
+  - name: Enviar notificação
+    uses: minhas-actions/acoes-personalizadas/notificacao@v1
+    with:
+      mensagem: "Fluxo de trabalho concluído com sucesso"
+```
+Nesse exemplo, o step "Checkout do repositório" utiliza uma ação pré-definida chamada "checkout" fornecida pelo repositório "actions/checkout@v3". Os steps "Executar compilação" e "Executar testes" executam comandos personalizados usando a palavra-chave "run".
+
+O último step, "Enviar notificação", utiliza uma ação personalizada chamada "notificacao" fornecida pelo repositório "minhas-actions/acoes-personalizadas/notificacao@v1". É possível passar parâmetros para a ação usando a palavra-chave "with" e especificando os valores desejados.
+
+Aprenda mais sobre actions personalizadas em: [Desenvolvimento de ações personalizadas](https://github.com/HenrikSantos/aprendendo-github-actions/tree/actions-personalizadas).
+
+Esses são apenas exemplos básicos da estrutura e configuração de arquivos YAML para fluxos de trabalho. Existem muitas outras opções e recursos disponíveis para personalizar e automatizar suas tarefas de desenvolvimento.
