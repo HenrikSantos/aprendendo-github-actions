@@ -1,4 +1,4 @@
-name: Jest test coverage
+name: CI | Verificação de Cobertura de Teste
 on: 
   push:
     branches: [ pull-request ]

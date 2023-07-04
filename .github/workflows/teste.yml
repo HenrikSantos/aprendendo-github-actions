@@ -1,4 +1,4 @@
-name: Jest test
+name: CI | Jest default test
 on: 
   push:
     branches: [ main, pull-request ]
