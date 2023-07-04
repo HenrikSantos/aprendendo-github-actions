@@ -18,10 +18,12 @@ jobs:
 
       - name: Verificar Cobertura
         run: |
-          const coverage = require('./coverage/lcov-report/index.json');
-          const totalCoverage = coverage.total;
+          COVERAGE_FILE="./coverage/lcov-report/index.json"
+          COVERAGE=$(cat $COVERAGE_FILE)
+          LINES_PCT=$(echo $COVERAGE | jq -r '.total.lines.pct')
+          STATEMENTS_PCT=$(echo $COVERAGE | jq -r '.total.statements.pct')
 
-          if (totalCoverage.lines.pct !== 100 || totalCoverage.statements.pct !== 100) {
-            echo "A cobertura de testes não é de 100%.";
-            exit 1;
-          }
+          if (( $(echo "$LINES_PCT < 100" | bc -l) )) || (( $(echo "$STATEMENTS_PCT < 100" | bc -l) )); then
+            echo "A cobertura de testes não é de 100%."
+            exit 1
+          fi
