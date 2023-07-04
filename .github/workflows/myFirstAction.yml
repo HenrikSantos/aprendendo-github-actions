@@ -1,0 +1,29 @@
+# Arquivo de Fluxo de Trabalho (myFirstAction.yml)
+
+name: Exemplo de Fluxo de Trabalho
+on:
+  pull_request:
+    branches: [introducao]
+
+# Fluxo de Trabalho
+jobs:
+  # Job
+  build:
+    # Runner
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1
+      - name: Verificar código
+        run: echo "Executando verificação do código..."
+
+      # Step 2
+      - name: Construir aplicativo
+        run: echo "Executando a construção do aplicativo..."
+
+      # Step 3
+      - name: Testar aplicativo
+        run: echo "Executando testes do aplicativo..."
+
+      # Step 4
+      - name: Enviar status code 0 para que o github entenda que deu tudo certo
+        run: exit 0
