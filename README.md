@@ -34,14 +34,16 @@ O arquivo de fluxo de trabalho define o fluxo de execução das ações, as depe
 # Arquivo de Fluxo de Trabalho (myFirstAction.yml)
 
 name: Exemplo de Fluxo de Trabalho
+# Event
 on:
   push:
-    branches: [introducao]
+    branches:
+      - introducao
 
-# Fluxo de Trabalho
+# Jobs
 jobs:
   # Job
-  build:
+  build: # Job name
     # Runner
     runs-on: ubuntu-latest
     steps:
@@ -61,3 +63,7 @@ jobs:
       - name: Enviar status code 0 para que o github entenda que deu tudo certo
         run: exit 0
 ```
+<img src="./images/pull_request%20steps.png" alt="Descrição da imagem" width="60%" height="auto">
+
+<img src="./images/pull_request%20checks%20passed.png" alt="Descrição da imagem" width="60%" height="auto">
+
