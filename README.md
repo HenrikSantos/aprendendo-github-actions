@@ -8,11 +8,7 @@ As GitHub Actions são fluxos de trabalho automatizados que podem ser configurad
 
 ## Objetivos deste repositório
 
-Este repositório foi criado para fornecer exemplos práticos e guias passo a passo que ajudarão você a aprender a usar as GitHub Actions. Aqui você encontrará:
-
-1. Exemplos básicos de fluxos de trabalho para começar.
-2. Exemplos de uso do Next.js 12.
-3. Demonstração de integração contínua (CI) e entrega contínua (CD) usando as GitHub Actions.
+Este repositório foi criado para fornecer exemplos práticos e guias passo a passo que ajudarão você a aprender a usar as GitHub Actions.
 
 ## Como usar este repositório
 
