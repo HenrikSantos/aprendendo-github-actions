@@ -12,6 +12,10 @@ jobs:
         with:
           node-version: latest
       - run: npm ci
+
+      - name: Executar Testes
+        run: npm test:coverage
+
       - name: Verificar Cobertura
         run: |
           const coverage = require('./coverage/lcov-report/index.json');
