@@ -1,11 +1,13 @@
 # Arquivo de Fluxo de Trabalho (myFirstAction.yml)
 
 name: Exemplo de Fluxo de Trabalho
+# Event
 on:
-  pull_request:
-    branches: [introducao]
+  push:
+    branches:
+      - introducao
 
-# Fluxo de Trabalho
+# Jobs
 jobs:
   # Job
   build:
