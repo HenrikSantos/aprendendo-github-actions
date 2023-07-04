@@ -1,77 +1,63 @@
-# Aprendendo GitHub Actions
+## O que são GitHub Actions
 
-Neste repositório, você encontrará recursos para aprender e praticar o uso das GitHub Actions. As GitHub Actions são uma poderosa ferramenta do GitHub que permite automatizar tarefas, processos e fluxos de trabalho em seu repositório.
+GitHub Actions é um serviço de integração contínua e entrega contínua (CI/CD) fornecido pelo GitHub. Ele permite automatizar o fluxo de trabalho de desenvolvimento de software, ajudando equipes a criar, testar e implantar aplicativos de forma mais eficiente.
 
-## O que são as GitHub Actions?
+## Benefícios de usar Actions
 
-As GitHub Actions são fluxos de trabalho automatizados que podem ser configurados em seu repositório GitHub. Esses fluxos de trabalho podem ser acionados por eventos específicos, como envio de código, criação de problemas ou lançamentos. Com as Actions, você pode criar fluxos de trabalho personalizados para automatizar tarefas como execução de testes, criação e publicação de pacotes, implantação em ambientes de produção e muito mais.
+Os benefícios de usar o GitHub Actions são diversos:
 
-## Objetivos deste repositório
+- **Automação do fluxo de trabalho:** As Actions permitem que você defina um conjunto de etapas automatizadas que são executadas sempre que ocorre um evento específico no seu repositório do GitHub. Isso inclui eventos como push de código, criação de pull requests ou até mesmo um cronograma regular.
 
-Este repositório foi criado para fornecer exemplos práticos e guias passo a passo que ajudarão você a aprender a usar as GitHub Actions.
+- **Integração com o ecossistema do GitHub:** O GitHub Actions está profundamente integrado ao GitHub, o que significa que você pode aproveitar os recursos existentes, como issues, pull requests e revisões de código, em conjunto com suas Actions. Isso facilita a implementação de práticas recomendadas de desenvolvimento e colaboração em seu fluxo de trabalho.
 
-## Como usar este repositório
+- **Configuração flexível:** Você pode criar fluxos de trabalho personalizados usando arquivos YAML. Isso permite que você defina etapas, dependências, variáveis de ambiente e até mesmo personalize as ações executadas em seu fluxo de trabalho.
 
-1. Navegue pelas branches para explorar diferentes tópicos disponíveis.
-2. Leia a documentação detalhada fornecida em cada diretório para entender como configurar e executar as GitHub Actions específicas.
-3. Crie seu próprio diretório com seu próprio código.
+- **Grande variedade de ações pré-construídas:** O GitHub Actions possui um marketplace onde você pode encontrar uma ampla gama de ações pré-construídas para realizar tarefas comuns, como testes, implantações em nuvem, notificações e muito mais. Isso ajuda a acelerar o processo de desenvolvimento, pois você não precisa criar tudo do zero.
+## Como as Actions funcionam
 
-# Glossário
+As GitHub Actions são definidas e configuradas usando um arquivo YAML. Esse arquivo, geralmente chamado de arquivo de fluxo de trabalho (workflow file), contém as instruções para as ações que serão executadas, esses arquivos devem estar dentro do diretório .github/workflows.
 
-1. [Introdução ao GitHub Actions](https://github.com/HenrikSantos/aprendendo-github-actions/tree/introducao):
-   - O que são GitHub Actions
-   - Benefícios de usar Actions
-   - Como as Actions funcionam
-   - Conceitos básicos (fluxo de trabalho, job, step, runner)
+Agora, vamos entender alguns termos importantes:
 
-2. [Sintaxe do arquivo de fluxo de trabalho](https://github.com/HenrikSantos/aprendendo-github-actions/tree/sintaxe):
-   - Estrutura básica do arquivo YAML
-   - Definindo um fluxo de trabalho
-   - Especificando eventos desencadeadores
-   - Configurando jobs e steps
-   - Usando ações pré-definidas e personalizadas
+1. **Fluxo de trabalho:** Um fluxo de trabalho é uma sequência de ações que são executadas quando um evento específico ocorre no repositório do GitHub. No arquivo de fluxo de trabalho, você define quais eventos acionarão a execução das ações.
 
-3. [Executando ações em um runner](https://github.com/HenrikSantos/aprendendo-github-actions/tree/execucao):
-   - Runners e tipos de runners disponíveis
-   - Configurando um runner
-   - Executando ações em diferentes sistemas operacionais
-   - Parâmetros e entradas de ação
+2. **Job:** Um job é uma unidade de trabalho dentro de um fluxo de trabalho. Você pode ter vários jobs em um fluxo de trabalho, e eles são executados em paralelo ou em sequência, dependendo das dependências entre eles. Cada job é composto por uma ou mais etapas (steps).
 
-4. [Integração contínua e entrega contínua (CI/CD)](https://github.com/HenrikSantos/aprendendo-github-actions/tree/cicd):
-   - Usando GitHub Actions para automação de CI/CD
-   - Configurando pipelines de CI/CD
-   - Realizando testes automatizados
-   - Fazendo implantação em diferentes ambientes
+3. **Step:** Um step é uma etapa individual dentro de um job. Cada step consiste em uma única ação que é executada. As ações podem ser executadas diretamente no ambiente hospedado pelo GitHub ou em um runner, que é uma máquina virtual ou física gerenciada por você.
 
-5. [Desenvolvimento de ações personalizadas](https://github.com/HenrikSantos/aprendendo-github-actions/tree/desenvolvimento):
-   - Criando sua própria ação personalizada
-   - Estrutura de uma ação
-   - Linguagens suportadas para ações personalizadas
-   - Testando e validando ações personalizadas
-   - Publicando ações personalizadas no GitHub Marketplace
+4. **Runner:** Um runner é uma instância do GitHub Actions que executa os jobs e steps definidos em seus fluxos de trabalho. Os runners podem ser hospedados pelo GitHub ou por você em sua própria infraestrutura.
 
-6. [Boas práticas e dicas avançadas](https://github.com/HenrikSantos/aprendendo-github-actions/tree/boas-praticas):
-   - Organizando fluxos de trabalho complexos
-   - Utilizando segredos e variáveis de ambiente
-   - Trabalhando com matrizes e condicionais
-   - Depurando e registrando ações
-   - Monitorando e analisando resultados
+O arquivo de fluxo de trabalho define o fluxo de execução das ações, as dependências entre os jobs, as ações a serem executadas em cada step e as variáveis de ambiente necessárias. Com a flexibilidade do arquivo YAML, você pode personalizar completamente o comportamento das suas ações de acordo com as necessidades do seu projeto.
 
-## Contribuição
+## Estrutura simples de uma action
+``` yml
+# Arquivo de Fluxo de Trabalho (myFirstAction.yml)
 
-Se você tiver sugestões, melhorias, atualizações ou exemplos adicionais que possam enriquecer este repositório, fique à vontade para enviar uma solicitação pull ou abrir uma issue. Sua contribuição é muito bem-vinda!
+name: Exemplo de Fluxo de Trabalho
+on:
+  push:
+    branches: [introducao]
 
-Antes de enviar uma solicitação pull, certifique-se de ler as diretrizes de contribuição do repositório.
+# Fluxo de Trabalho
+jobs:
+  # Job
+  build:
+    # Runner
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1
+      - name: Verificar código
+        run: echo "Executando verificação do código..."
 
-## Recursos úteis
+      # Step 2
+      - name: Construir aplicativo
+        run: echo "Executando a construção do aplicativo..."
 
-- [Documentação oficial das GitHub Actions](https://docs.github.com/en/actions)
-- [GitHub Marketplace](https://github.com/marketplace?type=actions) - Marketplace com várias Actions pré-construídas para diferentes casos de uso.
-- [Exemplos de fluxos de trabalho](https://github.com/actions/starter-workflows) - Exemplos oficiais de fluxos de trabalho fornecidos pelo GitHub.
-- [Awesome Actions](https://github.com/sdras/awesome-actions) - Uma lista curada de recursos úteis relacionados às GitHub Actions.
+      # Step 3
+      - name: Testar aplicativo
+        run: echo "Executando testes do aplicativo..."
 
-## Licença
-
-Este repositório está licenciado sob a [MIT License](LICENSE). Sinta-se à vontade para usá-lo e modificá-lo de acordo com suas necessidades.
-
----
+      # Step 4
+      - name: Enviar status code 0 para que o github entenda que deu tudo certo
+        run: exit 0
+```
