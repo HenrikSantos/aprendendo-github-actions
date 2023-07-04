@@ -1,33 +1,10 @@
-name: Verificação de Cobertura de Teste
-
-on: [pull_request]
+name: 'coverage'
+on:
+  pull_request
 
 jobs:
-  test:
-    name: Executar Testes
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout do repositório
-        uses: actions/checkout@v3
-
-      - name: Configurar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Instalar dependências
-        run: npm install
-
-      - name: Executar Testes
-        run: npm run test:coverage
-
-      - name: Verificar Cobertura
-        run: |
-          const coverage = require('./coverage/lcov-report/index.json');
-          const totalCoverage = coverage.total;
-
-          if (totalCoverage.lines.pct !== 100 || totalCoverage.statements.pct !== 100) {
-            echo "A cobertura de testes não é de 100%.";
-            exit 1;
-          }
+    coverage:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - uses: ArtiomTr/jest-coverage-report-action@v2
