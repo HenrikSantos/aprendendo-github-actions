@@ -29,6 +29,7 @@ Este repositório foi criado para fornecer exemplos práticos e guias passo a pa
    - Definindo um fluxo de trabalho
    - Especificando eventos desencadeadores
    - Configurando jobs e steps
+   - Lógica de programação em actions
    - Usando ações pré-definidas e personalizadas
 
 3. [Executando ações em um runner](https://github.com/HenrikSantos/aprendendo-github-actions/tree/execucao):
