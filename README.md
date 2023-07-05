@@ -296,7 +296,7 @@ Os contextos são uma forma de acessar informações sobre execuções de fluxo 
 
   - vars:	Contém variáveis definidas nos níveis do repositório, da organização ou do ambiente. Para obter mais informações, confira [Contexto vars](https://docs.github.com/pt/actions/learn-github-actions/contexts#vars-context).
 
-  - job:
+  - **job**:
     - O contexto job contém informações sobre o trabalho atualmente em execução.
     - Exemplo de conteúdo do contexto job utilizando um container PostgreSQL:
       ``` json
@@ -319,7 +319,7 @@ Os contextos são uma forma de acessar informações sobre execuções de fluxo 
     - Sem nenhuma configuração extra o contexto job apenas conterá a propriedade status.
     - Para obter mais informações, confira [Contexto job](https://docs.github.com/pt/actions/learn-github-actions/contexts#job-context).
 
-  - jobs:
+  - **jobs**:
     - O contexto job contém informações sobre o trabalho atualmente em execução.
     - O contexto jobs só está disponível em fluxos de trabalho reutilizáveis.
     - Exemplo de conteúdo do contexto jobs
@@ -336,7 +336,7 @@ Os contextos são uma forma de acessar informações sobre execuções de fluxo 
       ```
     - Para obter mais informações, confira [Contexto jobs](https://docs.github.com/pt/actions/learn-github-actions/contexts#jobs-context).
 
-  - steps:	
+  - **steps**:	
     - Informações sobre as etapas que foram executadas no trabalho atual.
     - O contexto steps contém informações sobre as etapas do trabalho atual que têm uma id especificada e que já foram executadas.
     - Exemplo de conteúdo do contexto steps
@@ -358,7 +358,7 @@ Os contextos são uma forma de acessar informações sobre execuções de fluxo 
       ```
     - Para obter mais informações, confira [Contexto steps](https://docs.github.com/pt/actions/learn-github-actions/contexts#steps-context).
 
-  - runner:	
+  - **runner**:	
     - O contexto runner contém informações sobre o executor que está executando o trabalho atual.
     - Exemplo de conteúdo do contexto runner:
       ``` json
@@ -372,7 +372,7 @@ Os contextos são uma forma de acessar informações sobre execuções de fluxo 
       ```
     - Para obter mais informações, confira [Contexto runner](https://docs.github.com/pt/actions/learn-github-actions/contexts#runner-context).
 
-  - secrets:
+  - **secrets**:
     - Por padrão, o contexto secrets apenas guarda o githu_token, mas é possivel adicionar outras chaves nas configurações do repositório.
     - Exemplo de conteúdo do contexto secrets:
       ``` json
@@ -383,9 +383,9 @@ Os contextos são uma forma de acessar informações sobre execuções de fluxo 
       ```
     - Para obter mais informações, confira [Contexto secrets](https://docs.github.com/pt/actions/learn-github-actions/contexts#secrets-context).
 
-  - strategy:	Informações sobre a estratégia de execução da matriz para o trabalho atual. Para obter mais informações, confira [Contexto strategy](https://docs.github.com/pt/actions/learn-github-actions/contexts#strategy-context).
+  - **strategy**:	Informações sobre a estratégia de execução da matriz para o trabalho atual. Para obter mais informações, confira [Contexto strategy](https://docs.github.com/pt/actions/learn-github-actions/contexts#strategy-context).
 
-  - matrix:	
+  - **matrix**:	
     - Para fluxos de trabalho com uma matriz, o contexto matrix contém as propriedades definidas no arquivo de fluxo de trabalho que se aplicam ao trabalho atual. Por exemplo, se você configurar uma matriz com as chaves os e node, o objeto de contexto matrix incluirá as propriedades os e node com os valores que estão sendo usados para o trabalho atual.
     ``` json
     {
@@ -396,9 +396,9 @@ Os contextos são uma forma de acessar informações sobre execuções de fluxo 
     - Não há propriedades padrão no contexto matrix, apenas aquelas que são definidas no arquivo de fluxo de trabalho.
     - Para obter mais informações, confira Contexto matrix.
 
-  - needs:	Contém as saídas de todos os trabalhos que são definidos como uma dependência do trabalho atual. Para obter mais informações, confira [Contexto needs](https://docs.github.com/pt/actions/learn-github-actions/contexts#needs-context).
+  - **needs**:	Contém as saídas de todos os trabalhos que são definidos como uma dependência do trabalho atual. Para obter mais informações, confira [Contexto needs](https://docs.github.com/pt/actions/learn-github-actions/contexts#needs-context).
 
-  - inputs:	Contém as entradas de um fluxo de trabalho reutilizável ou acionado manualmente. Para obter mais informações, confira [Contexto inputs](https://docs.github.com/pt/actions/learn-github-actions/contexts#inputs-context).
+  - **inputs**:	Contém as entradas de um fluxo de trabalho reutilizável ou acionado manualmente. Para obter mais informações, confira [Contexto inputs](https://docs.github.com/pt/actions/learn-github-actions/contexts#inputs-context).
 
 ## Obs
   - Esses são todos os contextos disponíveis, porém discorri apenas os que considero mais relevantes.
