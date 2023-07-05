@@ -1,0 +1,13 @@
+name: "Action Hello World"
+description: "Recebe uma o nome da pessoa e devolve uma saudação"
+inputs:
+  nome: # id do input
+    description: "Nome da pessoa"
+    required: true
+    default: "Sem nome"
+outputs:
+  saudacao: # id do output
+    description: "Path to results file"
+runs:
+  using: 'node16'
+  main: 'index.js'
