@@ -29,7 +29,10 @@ Agora, vamos entender alguns termos importantes:
 
 O arquivo de fluxo de trabalho define o fluxo de execução das ações, as dependências entre os jobs, as ações a serem executadas em cada step e as variáveis de ambiente necessárias. Com a flexibilidade do arquivo YAML, você pode personalizar completamente o comportamento das suas ações de acordo com as necessidades do seu projeto.
 
-mais em: [using-workflows](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions).
+Mais em: 
+- [workflow-syntax-for-github-actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions).
+- [events-that-trigger-workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
+- [webhook-events-and-payloads](https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads)
 
 ## Estrutura simples de uma action
 ``` yml
@@ -65,7 +68,8 @@ jobs:
       - name: Enviar status code 0 para que o github entenda que deu tudo certo
         run: exit 0
 ```
-<img src="./images/pull_request%20steps.png" alt="Descrição da imagem" width="60%" height="auto">
 
-<img src="./images/pull_request%20checks%20passed.png" alt="Descrição da imagem" width="60%" height="auto">
+<img src="./images/pull_request%20steps.png" alt="Descrição da imagem" width="100%" height="auto">
+
+<img src="./images/pull_request%20checks%20passed.png" alt="Descrição da imagem" width="100%" height="auto">
 
