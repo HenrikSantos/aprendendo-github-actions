@@ -29,6 +29,8 @@ Agora, vamos entender alguns termos importantes:
 
 O arquivo de fluxo de trabalho define o fluxo de execução das ações, as dependências entre os jobs, as ações a serem executadas em cada step e as variáveis de ambiente necessárias. Com a flexibilidade do arquivo YAML, você pode personalizar completamente o comportamento das suas ações de acordo com as necessidades do seu projeto.
 
+mais em: [using-workflows](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions).
+
 ## Estrutura simples de uma action
 ``` yml
 # Arquivo de Fluxo de Trabalho (myFirstAction.yml)
